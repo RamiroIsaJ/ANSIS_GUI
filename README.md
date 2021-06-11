@@ -10,6 +10,6 @@ In directory */src*, you will find an user guide document.
 Ansis could be use in 2 modes: ONLINE (during the biology process) or OFFLINE (analysis of image from a directory). The core of this software is GEMA. GEMA is an algorithm developed and used for image segmentation using a linear regression of cofficient of variation accordding the histogram. 
 
 ### Example of ANSIS evolution
-
+------------------------------|------------------------------
 ![image info](./src/ima2.png) | ![image info](./src/ima4.png)
 
