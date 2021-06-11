@@ -13,6 +13,7 @@ Ansis could be use in 2 modes: ONLINE (during the biology process) or OFFLINE (a
 
 ------------ | -------------
 ![image info](./src/ima2.png) | ![image info](./src/ima4.png)
+------------ | -------------
 
 
 ANSIS will be presented in a **scientific paper** in the next months.
