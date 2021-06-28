@@ -212,14 +212,19 @@ while True:
         if method == 0:
             for i1 in range(1, time_sleep):
                 eventC = sg.OneLineProgressMeter('Waiting new image', i1 + 1, time_sleep, 'single')
-                if eventC is False:
+                if eventC is False and i1 < time_sleep-1:
                     sg.Popup('Process canceled', ['Analysis was stopped...'])
                     finish_ = True
                     break
                 time.sleep(1)
             if finish_:
                 continue
-            image, i, exp, name = Ans.load_image(path_org, type_i, id_sys)
+            image, total, exp, name = Ans.load_image(path_org, type_i, id_sys)
+            if total > 0:
+                i += 1
+            else:
+                sg.Popup('Warning', ['No images in directory...'])
+                continue                   
         else:
             i += 1
             filenames, image, exp, name = Ans.load_image_i(path_org, i, type_i, filenames, exp, id_sys)
