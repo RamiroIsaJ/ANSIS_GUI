@@ -88,10 +88,10 @@ def preprocessing(img):
 
 
 def build_filters():
-    filters_, k_size, sigma = [], 21, 3.0
+    filters_, k_size, sigma = [], 31, 2.35
     for theta in np.arange(0, np.pi, np.pi / 4):
         kern = cv2.getGaborKernel((k_size, k_size), sigma, theta, 10.0, 0.50, 0, ktype=cv2.CV_32F)
-        kern /= 1.5*kern.sum()
+        kern /= 1.5 * kern.sum()
         filters_.append(kern)
     return filters_
 
@@ -270,7 +270,7 @@ def adaptive_ini(gabor, error):
     cv_ima = variation_cf(gabor)
     print(cv_ima)
     if cv_ima < p1 + error:
-        adapt_ini = 9
+        adapt_ini = 6
     elif cv_ima < p2 + error:
         adapt_ini = 11
     elif cv_ima < p3 + error:
@@ -278,7 +278,7 @@ def adaptive_ini(gabor, error):
     elif cv_ima < p4 + error:
         adapt_ini = 6
     else:
-        adapt_ini = 5
+        adapt_ini = 8
     return cv_ima, adapt_ini
 
 
@@ -406,7 +406,7 @@ def gema(total, data, ima, ima_name, filters, buffer_size, buffer, k, lambda_g, 
     thresh = cv2.adaptiveThreshold(gabor_img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY_INV, 75, adap)
 
     # apply morphology close with a circular shaped kernel
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (10, 10))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
     binary = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=3)
 
     # filter small regions around interest area
@@ -421,7 +421,7 @@ def gema(total, data, ima, ima_name, filters, buffer_size, buffer, k, lambda_g, 
     principal = morphology.remove_small_objects(arr, min_size=a_thr, connectivity=1).astype(np.uint8)
 
     # apply morphology dilate with a circular shaped kernel
-    kernel2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))
+    kernel2 = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     dilate = cv2.morphologyEx(principal, cv2.MORPH_DILATE, kernel2, iterations=3)
 
     # remove small holes inside interest area
