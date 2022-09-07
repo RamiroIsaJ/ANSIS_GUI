@@ -1,5 +1,5 @@
-# ANSIS Control Interface
-ANSIS by **Analysis of cells Images using Segmentation methods for automatic control** is a GUI Interface programmed in *PYTHON* using PySimpleGUI for image segmentation and control growing process. 
+# ANSIS Real-time control Interface
+ANSIS by **Analysis of cells Images using Segmentation methods in real time for automatic control** is a GUI Interface programmed in *PYTHON* using PySimpleGUI for image segmentation and control growing process. 
 This is a test version 0.1.2
 
 ![image info](./src/ima1.png)
